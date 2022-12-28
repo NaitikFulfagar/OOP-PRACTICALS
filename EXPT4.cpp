@@ -1,3 +1,6 @@
+/*Write a C++ program that creates an output file, writes information to it, closes the file, open
+it again as an input file and read the information from the file.*/
+
 #include<iostream>
 #include<fstream>
 using namespace std;
@@ -7,8 +10,8 @@ int main()
 	os1.open("name.txt");
 	os1<<"Naitik"<<endl;
 	os1<<"Rahul"<<endl;
-	os1<<"Komal"<<endl;
-	os1<<"Radhika"<<endl;
+	os1<<"Ram"<<endl;
+	os1<<"Shyam"<<endl;
 	os1.close();
 //************************************************
 	ofstream os2;
@@ -38,3 +41,5 @@ int main()
 	return 0;
 
 }
+
+//CODED BY NAITIK FULFAGAR
