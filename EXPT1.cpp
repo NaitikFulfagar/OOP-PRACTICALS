@@ -1,68 +1,69 @@
-/*Implement a class Complex which represents the Complex Number data type. Implement the
-following
-1. Constructor (including a default constructor which creates the complex number 0+0i).
-2. Overload operator+ to add two complex numbers.
-3. Overload operator* to multiply two complex numbers.
-4. Overload operators << and >> to print and read Complex Numbers.*/
-
 #include<iostream>
 using namespace std;
 
 class Complex
 {
-	public:
-	float real,img;
-	Complex()
-	{
-		real=0;
-		img=0;
-	} 
-	Complex operator +(Complex);
-	Complex operator *(Complex);
-	friend ostream & operator <<(ostream&,Complex&);
-	friend istream & operator >>(istream&,Complex&);
-
+    public:
+    float real,img;
+    Complex()
+    {
+        real=img=0.0;
+    }    
+    Complex operator+(Complex);
+    Complex operator*(Complex);
+    friend ostream & operator <<(ostream&,Complex&);
+    friend istream & operator >>(istream&,Complex&);
 };
 
-Complex Complex::operator+(Complex obj)
+Complex Complex::operator+(Complex o)
 {
     Complex temp;
-	temp.real = real + obj.real;
-	temp.img  = img  + obj.img;
-	return (temp);
+    temp.real = real   +   o.real;
+    temp.img  = img    +   o.img;
+    return(temp);
 }
 
-Complex Complex::operator*(Complex obj)
+Complex Complex::operator*(Complex o)
 {
     Complex temp;
-	temp.real = real * obj.real - img * obj.img;
-	temp.img  = real * obj.img  + img * obj.real;
-	return (temp);
+    temp.real = real * o.real - img * o.img;
+    temp.img  = real * o.img  - img * o.real;
+    return(temp);
 }
 
-ostream &operator<<(ostream& os, Complex& obj)
+ostream & operator <<(ostream& os,Complex& o)
 {
-	os<<"\n"<<obj.real<<"+"<<obj.img<<"i"<<endl;
+    if(o.img>=0)
+    {
+        os<<o.real<<"+"<<o.img<<"i";
+    }
+    else
+    {
+        os<<o.real<<o.img<<"i";
+    }
+    return(os);
 }
 
-istream &operator>>(istream& is, Complex& obj)
+istream & operator >>(istream& is,Complex& o)
 {
-	is>>obj.real>>obj.img;
+    is>>o.real>>o.img;
+    return(is);
 }
 
 int main()
 {
-	Complex a,b,c,d;
-	cout<<"First Complex no. \n Enter Real and Img part : ";
-	cin>>a;
-	cout<<"Second Complex no. \n Enter Real and Img part : ";
-	cin>>b;
-	//ADDITION
-	c=a+b;
-	cout<<"\n\nAddition Operation"<<c<<endl;
-	//Multiplication
-	d=a*b;
-	cout<<"\n\nMultiplication Operation"<<d<<endl;
-	return 0;
+    Complex a,b,c,d;
+    cout<<"\n1st Complex Number:";
+    cout<<"\nEnter Real and Imaginery part : ";
+    cin>>a;
+    cout<<"\n2nd Complex Number:";
+    cout<<"\nEnter Real and Imaginery part : ";
+    cin>>b;
+    //addition
+    c=a+b;
+    cout<<"\nComplex Number after Addition Operation is "<<c;
+    //multipication
+    d=a*b;
+    cout<<"\nComplex Number after Multipication Operation is "<<d<<endl;
+    return(0);
 }
-//CODED BY NAITIK FULFAGAR
